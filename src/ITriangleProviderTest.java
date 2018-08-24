@@ -17,7 +17,7 @@ public class ITriangleProviderTest {
      * This test scenario verify that 2 of 3 points are the same then it returns false (since this is not a triangle)
      */
     @org.junit.Test
-    public void getTriangleTest2() {
+    public void getTriangleTestZeroVector() {
         ITriangle testTriangle = new Triangle(1, 0 , 1, 0, 1, 0);
         ITriangleProvider.setTriangle(testTriangle);
 
@@ -25,11 +25,53 @@ public class ITriangleProviderTest {
     }
 
     /**
-     * This test verifies that if triangle is Right Triangle but rotated
-     *  (OX or OY are not parallel into any triangle side)
+     * This test scenario verify that 3 points on the same line (line parallel OX)
      */
     @org.junit.Test
-    public void getTriangleTest3() {
+    public void getTriangleTestOnOneLine1() {
+        ITriangle testTriangle = new Triangle(1, 3 , -7, -2, -2, -2);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertFalse(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * This test scenario verify that 3 points on the same line (line parallel OY)
+     */
+    @org.junit.Test
+    public void getTriangleTestOnOneLine2() {
+        ITriangle testTriangle = new Triangle(2, 2 , 2, -5, 0, 5);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertFalse(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * This test scenario verify that 3 points on the same line (line 45 degree from OX)
+     */
+    @org.junit.Test
+    public void getTriangleTestOnOneLine3() {
+        ITriangle testTriangle = new Triangle(1, 2 , 3, 1, 2, 3);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertFalse(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * This test scenario verify that 3 points on the same line
+     */
+    @org.junit.Test
+    public void getTriangleTestOnOneLine4() {
+        ITriangle testTriangle = new Triangle(1, 2 , 3, 1, 3, 5);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertFalse(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+    /**
+     * Any of 3 side of Right Triangle is not parallel to OX and OY
+     */
+    @org.junit.Test
+    public void getTriangleTestNonParallel() {
         ITriangle testTriangle = new Triangle(1, 4 , 6, 4, 1, 3);
         ITriangleProvider.setTriangle(testTriangle);
 
@@ -40,7 +82,7 @@ public class ITriangleProviderTest {
      * The triangle is located in 1st quarter
      */
     @org.junit.Test
-    public void getTriangleTest4() {
+    public void getTriangleTestQuarter1() {
         ITriangle testTriangle = new Triangle(2, 5 , 7, 5, 2, 4);
         ITriangleProvider.setTriangle(testTriangle);
 
@@ -51,7 +93,7 @@ public class ITriangleProviderTest {
      * The triangle is located in 2nd quarter
      */
     @org.junit.Test
-    public void getTriangleTest5() {
+    public void getTriangleTestQuarter2() {
         ITriangle testTriangle = new Triangle(2, 5 , 7, -5, -2, -4);
         ITriangleProvider.setTriangle(testTriangle);
 
@@ -62,7 +104,7 @@ public class ITriangleProviderTest {
      * The triangle is located in 3d quarter
      */
     @org.junit.Test
-    public void getTriangleTest6() {
+    public void getTriangleTestQuarter3() {
         ITriangle testTriangle = new Triangle(-2, -5 , -7, -5, -2, -4);
         ITriangleProvider.setTriangle(testTriangle);
 
@@ -73,7 +115,7 @@ public class ITriangleProviderTest {
      * The triangle is located in 4th quarter
      */
     @org.junit.Test
-    public void getTriangleTest7() {
+    public void getTriangleTestQuarter4() {
         ITriangle testTriangle = new Triangle(-2, -5 , -7, 5, 2, 4);
         ITriangleProvider.setTriangle(testTriangle);
 
@@ -84,7 +126,7 @@ public class ITriangleProviderTest {
      * The triangle is located in all 4 quarters
      */
     @org.junit.Test
-    public void getTriangleTest8() {
+    public void getTriangleTestQuarter5() {
         ITriangle testTriangle = new Triangle(-3, 0 , 2, 2, -1, 1);
         ITriangleProvider.setTriangle(testTriangle);
 
@@ -95,7 +137,7 @@ public class ITriangleProviderTest {
      * Right Triangle which fill half of The Cartesian plane
      */
     @org.junit.Test
-    public void getTriangleTest9() {
+    public void getTriangleTestBigNumber1() {
         ITriangle testTriangle = new Triangle(-Integer.MAX_VALUE,
                                               -Integer.MAX_VALUE,
                                                Integer.MAX_VALUE,
@@ -111,7 +153,7 @@ public class ITriangleProviderTest {
      * Right Triangle (-MAX_INT, 0) (0, -MAX_INT) (MAX_INT, 0)
      */
     @org.junit.Test
-    public void getTriangleTest10() {
+    public void getTriangleTestBigNumber2() {
         ITriangle testTriangle = new Triangle(-Integer.MAX_VALUE,
                 0,
                 Integer.MAX_VALUE,
@@ -127,7 +169,7 @@ public class ITriangleProviderTest {
      * Right Triangle (100-MAX_INT, 0) (0, 100-MAX_INT) (MAX_INT-100, 0)
      */
     @org.junit.Test
-    public void getTriangleTest11() {
+    public void getTriangleTestBigNumber3() {
         ITriangle testTriangle = new Triangle(100-Integer.MAX_VALUE,
                 0,
                 Integer.MAX_VALUE-100,
@@ -145,7 +187,7 @@ public class ITriangleProviderTest {
      * Right Triangle (99-MAX_INT, 0) (0, 100-MAX_INT) (MAX_INT-100, 0)
      */
     @org.junit.Test
-    public void getTriangleTest12() {
+    public void getTriangleTestBigNumber4() {
         ITriangle testTriangle = new Triangle(99-Integer.MAX_VALUE,
                 0,
                 Integer.MAX_VALUE-100,
@@ -163,7 +205,7 @@ public class ITriangleProviderTest {
      * Right Triangle (100-MAX_INT, 1) (0, 100-MAX_INT) (MAX_INT-100, 0)
      */
     @org.junit.Test
-    public void getTriangleTest13() {
+    public void getTriangleTestBigNumber5() {
         ITriangle testTriangle = new Triangle(100-Integer.MAX_VALUE,
                 0,
                 Integer.MAX_VALUE-100,
@@ -181,7 +223,7 @@ public class ITriangleProviderTest {
      * Right Triangle (100-MAX_INT, 0) (0, 100-MAX_INT) (MAX_INT-100, -1)
      */
     @org.junit.Test
-    public void getTriangleTest14() {
+    public void getTriangleTestBigNumber6() {
         ITriangle testTriangle = new Triangle(100-Integer.MAX_VALUE,
                 0,
                 Integer.MAX_VALUE-100,
@@ -197,7 +239,7 @@ public class ITriangleProviderTest {
      * Right Triangle (-MAX_INT, 0) (0, MAX_INT) (MAX_INT, 0)
      */
     @org.junit.Test
-    public void getTriangleTest15() {
+    public void getTriangleTestBigNumber7() {
         ITriangle testTriangle = new Triangle(-Integer.MAX_VALUE,
                 0,
                 Integer.MAX_VALUE,
