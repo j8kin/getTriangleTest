@@ -13,7 +13,7 @@ public interface ITriangle {
 Write JUnit tests which verifies that getTriangle return coordinates on the Cartesian plane of 3 point which creates Right Triangle.
 ============
 Assumption:
-since getTriangle dont have input parameters and no other information about ITriangleProvider I assume that it could be setTriangle mathod which allow to set output of getTriangle method to be able to provide variable input into a test.
+since getTriangle dont have input parameters and no other information about ITriangleProvider I assume that it could be setTriangle method which allow to set output of getTriangle method to be able to provide variable input into a test.
 
 I use algorithm with multiplication and additions to avoid floating point calculations.
 Another solution could be based on Pifagor Theorem c^2 = a^2 + b^2
