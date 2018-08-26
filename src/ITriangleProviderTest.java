@@ -67,6 +67,18 @@ public class ITriangleProviderTest {
 
         assertFalse(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
     }
+
+    /**
+     * This test scenario verify that 3 points on the same line
+     */
+    @org.junit.Test
+    public void getTriangleTestOnOneLine5() {
+        ITriangle testTriangle = new Triangle(Integer.MIN_VALUE, 0 , Integer.MAX_VALUE, Integer.MIN_VALUE, 0, Integer.MAX_VALUE);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertFalse(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
     /**
      * Any of 3 side of Right Triangle is not parallel to OX and OY
      */
@@ -138,12 +150,13 @@ public class ITriangleProviderTest {
      */
     @org.junit.Test
     public void getTriangleTestBigNumber1() {
-        ITriangle testTriangle = new Triangle(-Integer.MAX_VALUE,
-                                              -Integer.MAX_VALUE,
-                                               Integer.MAX_VALUE,
-                                               Integer.MAX_VALUE,
-                                              -Integer.MAX_VALUE,
-                                              -Integer.MAX_VALUE);
+        ITriangle testTriangle = new Triangle(
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MAX_VALUE,
+                Integer.MIN_VALUE,
+                Integer.MIN_VALUE);
         ITriangleProvider.setTriangle(testTriangle);
 
         assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
@@ -154,7 +167,8 @@ public class ITriangleProviderTest {
      */
     @org.junit.Test
     public void getTriangleTestBigNumber2() {
-        ITriangle testTriangle = new Triangle(-Integer.MAX_VALUE,
+        ITriangle testTriangle = new Triangle(
+                -Integer.MAX_VALUE,
                 0,
                 Integer.MAX_VALUE,
                 0,
@@ -279,6 +293,88 @@ public class ITriangleProviderTest {
     @org.junit.Test
     public void getTriangleTestRightAngleInMostRight() {
         ITriangle testTriangle = new Triangle(2, 5 , 3, 2, 5, 7);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+
+    //===============================================================
+    // Verify that there are no difference in point order:
+    //  Case 1: (X1,Y1); (X2,Y2); (X3,Y3)
+    //  Case 2: (X1,Y1); (X3,Y3); (X2,Y2);
+    //  Case 3: (X2,Y2); (X1,Y1); (X3,Y3);
+    //  Case 4: (X2,Y2); (X3,Y3); (X2,Y2);
+    //  Case 5: (X3,Y3); (X1,Y1); (X2,Y2);
+    //  Case 6: (X3,Y3); (X2,Y2); (X1,Y1);
+
+    /**
+     * No difference in point order
+     * Case 1: (X1,Y1); (X2,Y2); (X3,Y3)
+     */
+    @org.junit.Test
+    public void getTriangleTestPointOrder1() {
+        ITriangle testTriangle = new Triangle(2, 5 , 3, 2, 5, 7);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * No difference in point order
+     * Case 2: (X1,Y1); (X3,Y3); (X2,Y2);
+     */
+    @org.junit.Test
+    public void getTriangleTestPointOrder2() {
+        ITriangle testTriangle = new Triangle(2, 3 , 5, 2, 7, 5);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * No difference in point order
+     * Case 3: (X2,Y2); (X1,Y1); (X3,Y3);
+     */
+    @org.junit.Test
+    public void getTriangleTestPointOrder3() {
+        ITriangle testTriangle = new Triangle(5, 2 , 3, 5, 2, 7);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * No difference in point order
+     * Case 4: (X2,Y2); (X3,Y3); (X2,Y2);
+     */
+    @org.junit.Test
+    public void getTriangleTestPointOrder4() {
+        ITriangle testTriangle = new Triangle(5, 3 , 2, 5, 7, 2);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * No difference in point order
+     * Case 5: (X3,Y3); (X1,Y1); (X2,Y2);
+     */
+    @org.junit.Test
+    public void getTriangleTestPointOrder5() {
+        ITriangle testTriangle = new Triangle(3, 2 , 5, 7, 2, 5);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * No difference in point order
+     * Case 6: (X3,Y3); (X2,Y2); (X1,Y1);
+     */
+    @org.junit.Test
+    public void getTriangleTestPointOrder6() {
+        ITriangle testTriangle = new Triangle(3, 5 , 2, 7, 5, 2);
         ITriangleProvider.setTriangle(testTriangle);
 
         assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
