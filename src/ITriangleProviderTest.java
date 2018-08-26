@@ -250,4 +250,38 @@ public class ITriangleProviderTest {
 
         assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
     }
+
+    /**
+     * Right Triangle. Right Angle the most left angle
+     */
+    @org.junit.Test
+    public void getTriangleTestRightAngleInMostLeft() {
+        ITriangle testTriangle = new Triangle(2, 5 , 4, 5, 2, 7);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * Right Triangle. Right Angle is in the middle.
+     */
+    @org.junit.Test
+    public void getTriangleTestRightAngleInTheMiddle() {
+        ITriangle testTriangle = new Triangle(2, 5 , 7, 5, 2, 4);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
+    /**
+     * Right Triangle. Right Angle the most Right angle
+     */
+    @org.junit.Test
+    public void getTriangleTestRightAngleInMostRight() {
+        ITriangle testTriangle = new Triangle(2, 5 , 3, 2, 5, 7);
+        ITriangleProvider.setTriangle(testTriangle);
+
+        assertTrue(RightTriangleVerifier.VerifyTriangle(ITriangleProvider.getTriangle()));
+    }
+
 }
